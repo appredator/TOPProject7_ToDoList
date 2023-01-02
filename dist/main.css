@@ -1,44 +1,44 @@
 /* CSS for Page Heading */
 .grid-container {
-    display: grid;
-    grid-template-areas:
-      'projectName task dueDate status'
-  }
-  .projectName {
-    grid-area: projectName;
-  }
-  .task{
-    grid-area: task;
-  }
-  .dueDate{
-    grid-area: dueDate;
-  }
-  .status {
-    grid-area: status;
-  }
-  
-  /* CSS for to do list rows */
-  
-  .projects{
-    display: grid;
-    grid-template-areas:
-      'projectNameCell titleCell dueDateCell statusCell'
-  }
-  
-  .projectNameCell {
-    grid-area: projectNameCell;
-  }
-  .titleCell{
-    grid-area: titleCell;
-  }
-  .dueDateCell{
-    grid-area: dueDateCell;
-  }
-  .statusCell{
-    grid-area: statusCell;
-  }
-  
-  #addProject{
-    width: 100%;
-  }
+  display: grid;
+  grid-template-areas:
+    'projectName task dueDate status'
+}
+.projectName {
+  grid-area: projectName;
+}
+.task{
+  grid-area: task;
+}
+.dueDate{
+  grid-area: dueDate;
+}
+.status {
+  grid-area: status;
+}
+
+/* CSS for to do list rows */
+
+.projects{
+  display: grid;
+  grid-template-areas:
+    'projectNameCell taskCell dueDateCell statusCell'
+}
+
+.projectNameCell {
+  grid-area: projectNameCell;
+}
+.taskCell{
+  grid-area: taskCell;
+}
+.dueDateCell{
+  grid-area: dueDateCell;
+}
+.statusCell{
+  grid-area: statusCell;
+}
+
+#addProject{
+  width: 100%;
+}
   

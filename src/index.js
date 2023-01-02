@@ -3,22 +3,15 @@ class Project {
   constructor(name) {
     this.name = name;
 	}
-  
+ 
 }
 
-class ToDo {
+class ToDo{
 
-  constructor(projectName, task, dueDate, status) {
+  constructor(projectName, list =[]) {
     this.projectName = projectName;
-    this.task = task;
-    this.dueDate = dueDate;
-    this.status = status; 
-    this.list = 
-    [{
-    task: "",
-    status: "",
-    dueDate: "",
-    }]; 
+    this.list = list;
+ 
     
     }
 
@@ -35,25 +28,20 @@ function addProject(){
 
 let counter = 0;
 //Select bottom div for updates etc
-var content = document.querySelector(".projects");
+const content = document.querySelector(".projects");
 
-//Save projectNameField contents when enter is pressed on the ProjectName Field
+//Save projectNameField contents when enter or tab is pressed on the ProjectName Field
 const projectNameField = document.createElement("input");
 projectNameField.classList.add('projectNameCell');
 content.appendChild(projectNameField);
 projectNameField.addEventListener('keydown', function onEvent(e) {
     if (e.key === 'Enter' || e.key === 'Tab') {
-//Get and save project name
-/* var project = projectNameField.value; */
-//Instantiate Project constructor with DOM value
-let project = new Project(projectNameField.value);
-console.log(e.key)
-
-projectNameField.remove();
-//Use constructor to display project name in text
+//Get and save project name from input field
+console.log("Value for Project Name is " + projectNameField.value)
 const projectNameDisplay = document.createElement("h3");
 projectNameDisplay.classList.add('projectNameCell');
-projectNameDisplay.innerHTML = project.name;
+projectNameDisplay.innerHTML = projectNameField.value;
+projectNameField.remove();
 content.appendChild(projectNameDisplay);
 
 }
@@ -66,17 +54,12 @@ taskField.classList.add('taskCell');
 content.appendChild(taskField);
 taskField.addEventListener('keydown', function onEvent(e) {
     if (e.key === 'Enter' || e.key === 'Tab')  {
-//Get and save title
 
-//Instantiate toDo constructor with DOM value
-let holder = new ToDo(taskField.value);
-holder.projectName = document.querySelector(".projectNameCell").innerHTML;
-holder.task = taskField.value;
-console.log(holder.task)
-//Use constructor to display project name in text
+//Get and save task name from input field
+console.log("Value for Task Name is " + taskField.value)
 const taskDisplay = document.createElement("h3");
-taskDisplay.classList.add('titleCell');
-taskDisplay.innerHTML = holder.task;
+taskDisplay.classList.add('taskCell');
+taskDisplay.innerHTML = taskField.value;
 taskField.remove();
 content.appendChild(taskDisplay);
 
@@ -88,15 +71,13 @@ dueDateField.classList.add('dueDateCell');
 content.appendChild(dueDateField);
 dueDateField.addEventListener('keydown', function onEvent(e) {
     if (e.key === 'Enter' || e.key === 'Tab')  {
-//Instantiate toDo constructor with DOM value
-holder.dueDate = dueDateField.value;
-/* console.log(task.list.dueDate) */
-
-dueDateField.remove();
-//Use constructor to display project name in text
+    
+//Get and save task name from input field
+console.log("Value for Due Date is " + dueDateField.value)
 const dueDateDisplay = document.createElement("h3");
 dueDateDisplay.classList.add('dueDateCell');
-dueDateDisplay.innerHTML = holder.dueDate;
+dueDateDisplay.innerHTML = dueDateField.value;
+dueDateField.remove();
 content.appendChild(dueDateDisplay);
 
 }
@@ -108,47 +89,40 @@ content.appendChild(statusField);
 statusField.addEventListener('keydown', function onEvent(e) {
     if (e.key === 'Enter' || e.key === 'Tab')  {
 
-//Instantiate toDo constructor with DOM value
-task.status = statusField.value;
-console.log(task.dueDate)
-
-statusField.remove();
-//Use constructor to display project name in text
+//Get and save task name from input field
+console.log("Value for status is " + statusField.value)
 const statusDisplay = document.createElement("h3");
 statusDisplay.classList.add('statusCell');
-statusDisplay.innerHTML = task.status;
+statusDisplay.innerHTML = statusField.value;
+statusField.remove();
 content.appendChild(statusDisplay);
 
-}
-});
+
+let project = new Project(document.querySelector(".projectNameCell").innerHTML);
+
+console.log(project.name)
 
 
+let holder = new ToDo(document.querySelector(".projectNameCell").innerHTML, 
+[{
+task: document.querySelector(".taskCell").innerHTML,
+dueDate: document.querySelector(".dueDateCell").innerHTML,
+status: document.querySelector(".statusCell").innerHTML,
+}]);
+
+console.log(holder.list[0])
 
 counter++;
+}
+
+
+});
+
 
 /* renderDetails(); */
 }
 
 
 
-
-
-
-
-
-
-//IIFE Display Controller Module to render project properties to DOM
-/* const displayController = ( function() {
-const projectTitle = document.querySelector(".projectTitle");
-if (typeof project1 === 'object'){
-  projectTitle.innerHTML = project1.toDoList.title;
-}
-else  {
-  console.log("Type of check was false from display controller")
-  console.log(typeof project1)
-
-}   
-return { projectTitle } 
-})(); */
 
 
