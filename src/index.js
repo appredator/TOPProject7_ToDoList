@@ -1,4 +1,11 @@
-class Project {
+import projects from './projects';
+
+import tasks from './tasks';
+
+
+// import dom from './dom';
+
+class Projecter {
 
   constructor(name) {
     this.name = name;
@@ -6,7 +13,7 @@ class Project {
  
 }
 
-class ToDo{
+class ToDos{
 
   constructor(projectName, list =[]) {
     this.projectName = projectName;
@@ -97,13 +104,15 @@ statusDisplay.innerHTML = statusField.value;
 statusField.remove();
 content.appendChild(statusDisplay);
 
-
-let project = new Project(document.querySelector(".projectNameCell").innerHTML);
+projects.addProject(document.querySelector(".projectNameCell").innerHTML)
+// let project = new Project(document.querySelector(".projectNameCell").innerHTML);
 
 console.log(project.name)
 
+tasks.addTask(document.querySelector(".taskCell").innerHTML);
 
-let holder = new ToDo(document.querySelector(".projectNameCell").innerHTML, 
+
+let holder = new ToDo(document.querySelector(".taskCell").innerHTML, 
 [{
 task: document.querySelector(".taskCell").innerHTML,
 dueDate: document.querySelector(".dueDateCell").innerHTML,
